@@ -4,8 +4,8 @@
 function buildLyricTextures(
   lyricsJSON,
   renderStyle,
-  width = 280,
-  height = 157,
+  userWidth = 180,
+  userHeight = 101,
   fillStyle = "dark-gray",
   glowStyle = "on",
   targetCanvas = null
@@ -15,6 +15,10 @@ function buildLyricTextures(
 
   const canvasW = targetCanvas ? targetCanvas.width : 1280;
   const canvasH = targetCanvas ? targetCanvas.height : 720;
+
+  // Enforce Konstan Resolusi Render Lirik di 180 x 101 (Ultra HD Density) untuk semua opsi
+  const width = 180;
+  const height = 101;
 
   lyricsJSON.forEach((item) => {
     const text = item.text;
@@ -43,7 +47,7 @@ function buildLyricTextures(
     mCtx.textBaseline = "middle";
 
     // Posisi lirik di area ~35% tinggi layar dari bawah (font diperbesar ke 19%)
-    const bottomGapHD = Math.floor(canvasH * 0.255);
+    const bottomGapHD = Math.floor(canvasH * 0.17);
     const yPosHD = canvasH - bottomGapHD - (fontSizeHD / 2);
     const xPosHD = canvasW / 2;
 
@@ -67,8 +71,8 @@ function buildLyricTextures(
 
     // 2. Petakan sel grid pengguna menggunakan Sub-Cell Super-Sampling (Area Sampling)
     const maxRadius = Math.min(cellWidth, cellHeight) * 0.44;
-    // High-Contrast ASCII Glyph Booster: perbesar ukuran font glyph (1.85x) jika kerapatan tinggi agar @ / # legible
-    const glyphScale = cellWidth < 6 ? 1.85 : 1.5;
+    // High-Contrast ASCII Glyph Booster: perbesar ukuran font glyph (1.5x) pada 180x101
+    const glyphScale = 1.5;
     const fontSizeGrid = Math.floor(Math.min(cellWidth, cellHeight) * glyphScale);
 
     const tCanvas = document.createElement("canvas");
