@@ -686,6 +686,32 @@ document.addEventListener("DOMContentLoaded", () => {
     fsExitBtn.addEventListener("click", exitFullscreenLandscape);
   }
 
+  // Mobile Orientation Validation Engine
+  const orientationOverlay = document.getElementById("orientation-overlay");
+  const overlayRotateBtn = document.getElementById("overlay-rotate-btn");
+
+  function checkOrientationGuard() {
+    if (!orientationOverlay) return;
+    const isMobileDevice = window.innerWidth <= 900 || ('ontouchstart' in window && window.innerWidth < 1024);
+    const isPortraitMode = window.innerHeight > window.innerWidth;
+
+    if (isMobileDevice && isPortraitMode) {
+      orientationOverlay.classList.remove("hidden");
+      document.body.classList.add("orientation-locked");
+    } else {
+      orientationOverlay.classList.add("hidden");
+      document.body.classList.remove("orientation-locked");
+    }
+  }
+
+  checkOrientationGuard();
+  window.addEventListener("resize", checkOrientationGuard);
+  window.addEventListener("orientationchange", checkOrientationGuard);
+
+  if (overlayRotateBtn) {
+    overlayRotateBtn.addEventListener("click", enterFullscreenLandscape);
+  }
+
   // Listener Perubahan Mode Fullscreen untuk Toggle Bar Melayang (Floating Controls)
   function handleFullscreenChange() {
     const isFS = Boolean(document.fullscreenElement || document.webkitFullscreenElement);

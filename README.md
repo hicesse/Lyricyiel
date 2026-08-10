@@ -30,7 +30,9 @@
 
 ### 📤 5. Custom Media Upload & 100% Client-Side Privacy
 - Pengguna dapat mengunggah file video atau foto secara bebas untuk dijadikan visualizer latar belakang.
-- **100% Client-Side Processing**: File diolah sepenuhnya di RAM peramban pengguna melalui `URL.createObjectURL()`. Privasi pengguna 100% terjamin dan server bebas biaya *storage* atau *upload bandwidth*.
+### 📱 6. Mobile Landscape Validation Overlay & Animated Device Rotation
+- **Strict Mobile Portrait Protection:** Pada layar HP/tablet dengan posisi tegak (Portrait), aplikasi menampilkan popup modal pengunci penuh yang menghalangi akses web sampai perangkat dimiringkan.
+- **Looping Device Animation:** Dilengkapi animasi visual vektor HP yang berputar 90° secara terus-menerus (looping) dari posisi tegak ke miring sebagai petunjuk intuitif bagi pengguna.
 
 ---
 

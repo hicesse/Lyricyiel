@@ -62,6 +62,7 @@ Aplikasi mengadopsi gaya visual **70s Vintage Print Catalog** yang terinspirasi 
 ### C. Komponen Layout & Responsivitas Mobile
 - **Garis & Bayangan Cetak Mentah:** Menggunakan batas garis hitam tegas `2px solid #1A1A1A` dan bayangan jatuh tajam (*sharp drop shadow* `box-shadow: 4px 4px 0px #1A1A1A`).
 - **Auto-Landscape Visualizer Container:** Menjaga rasio layar visualizer tetap **16:9 Landscape** meskipun diakses dari perangkat telepon genggam posisi tegak (Portrait).
+- **Mobile Landscape Orientation Lock Overlay:** Validasi popup non-dismissable dengan animasi looping rotasi device 90° (Portrait ke Landscape) yang secara otomatis memblokir interaksi web jika HP/tablet berada pada posisi tegak, dan otomatis terbuka saat miring (Landscape).
 - **Fullscreen Orientation Lock API:** Menyediakan tombol khusus untuk mengunci orientasi layar seluler ke posisi Landscape Fullscreen.
 
 ---

@@ -182,8 +182,43 @@
 
     <!-- Footer -->
     <footer class="app-footer">
-      <p><strong>Lilynn</strong> &copy; 2026 | Created by <strong>@hicesse</strong> • Built with Web Audio API &amp; HTML5 Canvas 2D</p>
+      <p><strong>Lyricyiel</strong> &copy; 2026 | Created by <strong>@hicesse</strong> • Built with Web Audio API &amp; HTML5 Canvas 2D</p>
     </footer>
+  </div>
+
+  <!-- Mobile Landscape Lock Validation Modal Overlay -->
+  <div id="orientation-overlay" class="orientation-overlay hidden">
+    <div class="orientation-modal-card glass-panel">
+      
+      <div class="device-rotate-anim-wrapper">
+        <div class="device-phone">
+          <div class="phone-screen">
+            <div class="phone-screen-content">
+              <span class="music-note-icon">🎵</span>
+              <span class="screen-bars"><span></span><span></span><span></span></span>
+            </div>
+          </div>
+          <div class="phone-home-indicator"></div>
+        </div>
+        <div class="rotate-arrow-badge" title="Miringkan Perangkat">
+          <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"/>
+          </svg>
+        </div>
+      </div>
+
+      <h2 class="orientation-title">📱 Putar Perangkat ke Landscape</h2>
+      <p class="orientation-desc">
+        Akses aplikasi <strong>Lyricyiel</strong> memerlukan posisi layar horizontal (Landscape) untuk tampilan visualizer matriks &amp; lirik 60 FPS yang presisi.
+      </p>
+      <p class="orientation-subdesc">
+        Silakan miringkan HP / Tablet Anda <strong>90° ke posisi tidur (Landscape)</strong> untuk membuka akses aplikasi.
+      </p>
+
+      <button id="overlay-rotate-btn" class="primary-btn pulse-glow sm-btn">
+        🔄 Buka Landscape Fullscreen
+      </button>
+    </div>
   </div>
 
   <!-- Progress Bar Modal Overlay (Non-Realtime Pre-rendering) -->
