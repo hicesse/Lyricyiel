@@ -27,8 +27,8 @@ function buildLyricTextures(
     const mCtx = maskCanvas.getContext("2d");
     mCtx.clearRect(0, 0, canvasW, canvasH);
 
-    // Font size proporsional 16% dari tinggi canvas (~115px pada 720p height)
-    let fontSizeHD = Math.floor(canvasH * 0.16);
+    // Font size HD diperbesar ke 19% dari tinggi canvas (~137px pada 720p height)
+    let fontSizeHD = Math.floor(canvasH * 0.19);
     mCtx.font = `900 ${fontSizeHD}px "Outfit", sans-serif`;
 
     // Autoscale font size jika kalimat lirik panjang (melebihi 90% lebar canvas)
@@ -42,8 +42,8 @@ function buildLyricTextures(
     mCtx.textAlign = "center";
     mCtx.textBaseline = "middle";
 
-    // Posisi lirik di area ~35% tinggi layar dari bawah (tinggi font tetap 16%)
-    const bottomGapHD = Math.floor(canvasH * 0.27);
+    // Posisi lirik di area ~35% tinggi layar dari bawah (font diperbesar ke 19%)
+    const bottomGapHD = Math.floor(canvasH * 0.255);
     const yPosHD = canvasH - bottomGapHD - (fontSizeHD / 2);
     const xPosHD = canvasW / 2;
 
@@ -67,8 +67,8 @@ function buildLyricTextures(
 
     // 2. Petakan sel grid pengguna menggunakan Sub-Cell Super-Sampling (Area Sampling)
     const maxRadius = Math.min(cellWidth, cellHeight) * 0.44;
-    // High-Contrast ASCII Glyph Booster: perbesar ukuran font glyph (1.7x) jika kerapatan tinggi agar @ / # legible
-    const glyphScale = cellWidth < 6 ? 1.7 : 1.35;
+    // High-Contrast ASCII Glyph Booster: perbesar ukuran font glyph (1.85x) jika kerapatan tinggi agar @ / # legible
+    const glyphScale = cellWidth < 6 ? 1.85 : 1.5;
     const fontSizeGrid = Math.floor(Math.min(cellWidth, cellHeight) * glyphScale);
 
     const tCanvas = document.createElement("canvas");
