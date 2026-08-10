@@ -1,6 +1,6 @@
 # Lyricyiel
 
-![Version](https://img.shields.io/badge/version-1.0.0--official-DF6C4F?style=for-the-badge)
+![Version](https://img.shields.io/badge/version-2.0.0--official-DF6C4F?style=for-the-badge)
 ![License](https://img.shields.io/badge/license-MIT-1A1A1A?style=for-the-badge)
 ![Architecture](https://img.shields.io/badge/architecture-100%25%20Client--Side-987654?style=for-the-badge)
 ![Author](https://img.shields.io/badge/built%20by-@hicesse-DF6C4F?style=for-the-badge)
