@@ -4,7 +4,7 @@
 const DEFAULT_ASCII_CHARS = " .:-=+*#%@abi8";
 
 // Helper: Render Matriks Karakter ASCII (" .:-=+*#%@") Full Warna Akurat & Gradien Kaya
-function drawColorASCIIMatrix(ctx, colorData, width = 280, height = 157, targetCanvas = null, customAsciiChars = DEFAULT_ASCII_CHARS) {
+function drawColorASCIIMatrix(ctx, colorData, width = 180, height = 101, targetCanvas = null, customAsciiChars = DEFAULT_ASCII_CHARS) {
   if (!colorData) return;
 
   const canvasW = targetCanvas ? targetCanvas.width : ctx.canvas.width;
@@ -12,7 +12,7 @@ function drawColorASCIIMatrix(ctx, colorData, width = 280, height = 157, targetC
 
   const cellWidth = canvasW / width;
   const cellHeight = canvasH / height;
-  const fontSize = Math.floor(Math.min(cellWidth, cellHeight) * 1.3);
+  const fontSize = Math.floor(Math.min(cellWidth, cellHeight) * 1.7);
 
   ctx.font = `700 ${fontSize}px "JetBrains Mono", monospace`;
   ctx.textAlign = "center";
@@ -53,7 +53,7 @@ function drawColorASCIIMatrix(ctx, colorData, width = 280, height = 157, targetC
 }
 
 // Helper: Render Matriks Circle Dot Full Warna & Gradien Radial Akurat (LED/Shader Matrix)
-function drawColorDotMatrix(ctx, colorData, width = 280, height = 157, targetCanvas = null) {
+function drawColorDotMatrix(ctx, colorData, width = 180, height = 101, targetCanvas = null) {
   if (!colorData) return;
 
   const canvasW = targetCanvas ? targetCanvas.width : ctx.canvas.width;
@@ -109,7 +109,7 @@ function drawColorDotMatrix(ctx, colorData, width = 280, height = 157, targetCan
 }
 
 // Helper: Membangun Offscreen Canvas Buffer per Frame Media (Hanya frame media asli, hemat memori)
-async function buildFrameCanvases(renderData, renderStyle, defaultGridW = 280, defaultGridH = 157, targetCanvas = null, onProgress = null) {
+async function buildFrameCanvases(renderData, renderStyle, defaultGridW = 180, defaultGridH = 101, targetCanvas = null, onProgress = null) {
   if (!renderData || !renderData.frames || renderData.frames.length === 0) return [];
 
   const frameCanvases = [];

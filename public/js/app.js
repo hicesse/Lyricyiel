@@ -55,14 +55,14 @@ document.addEventListener("DOMContentLoaded", () => {
   let isSeeking = false;
   let audioAnalyser = null;
 
-  // Grid Resolution Default: Ultra 8K Precision (280x157 = 43,960 Grid Points) untuk Presisi Layar Maksimal
-  let GRID_WIDTH = 280;
-  let GRID_HEIGHT = 157;
+  // Grid Resolution Default: Ultra HD Density (180x101 = 18,180 Grid Points) untuk Presisi Layar Maksimal
+  let GRID_WIDTH = 180;
+  let GRID_HEIGHT = 101;
 
   function getGridResolution() {
-    if (!densitySelect) return { width: 280, height: 157 };
+    if (!densitySelect) return { width: 180, height: 101 };
     const [w, h] = densitySelect.value.split("x").map(Number);
-    return { width: w || 280, height: h || 157 };
+    return { width: w || 180, height: h || 101 };
   }
 
   // 1. Inisialisasi: Fetch daftar lagu dari Server REST API

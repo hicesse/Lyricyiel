@@ -71,7 +71,7 @@ function buildLyricTextures(
 
     // 2. Petakan sel grid pengguna menggunakan Sub-Cell Super-Sampling (Area Sampling)
     const maxRadius = Math.min(cellWidth, cellHeight) * 0.44;
-    // High-Contrast ASCII Glyph Booster: perbesar ukuran font glyph (1.5x) pada 180x101
+        // High-Contrast ASCII Glyph Booster: perbesar ukuran font glyph (1.5x) pada 180x101
     const glyphScale = 1.5;
     const fontSizeGrid = Math.floor(Math.min(cellWidth, cellHeight) * glyphScale);
 

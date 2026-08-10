@@ -128,19 +128,19 @@ Dokumen ini mencatat daftar perubahan, perbaikan bug, optimasi performa, dan pen
 
 ---
 
-## 🚀 Rilis Versi 2.0 (v2.0) — Adaptive Super-Sampled Lyrics & ASCII Glyph Engine (10 Agustus 2026)
+## 🚀 Rilis Versi 1.5 (v1.5) — Adaptive Super-Sampled Lyrics & ASCII Glyph Engine (10 Agustus 2026)
 
 ### 💎 1. Sub-Cell Area-Coverage Super-Sampling Engine (Fix Hollow Text Putus-Putus)
 - **Diagnosa Root Cause**:
   - Pada kerapatan grid sedang hingga rendah (`100x56` & `140x78`), sampling piksel 1 titik di tengah sel sering meluputi garis vektor outline font lirik yang tipis, menyebabkan sebagian huruf lirik terputus-putus atau hilang (*line break artifact*).
-- **Solusi Teknis v2.0**:
+- **Solusi Teknis v1.5**:
   - Mengimplementasikan **Sub-Cell 2x2 Area Sampling (4 Titik Presisi)** pada `buildLyricTextures`. Setiap sel grid kini mengevaluasi 4 titik sub-piksel di dalam rentang koordinat sel secara seimbang dan efisien.
   - Jika salah satu sub-piksel menyentuh garis outline vektor font HD, sel tersebut dijamin 100% di-render sebagai **Outline Border**, mengeliminasi bug garis lirik terputus-putus tanpa membuat tampilan terlalu padat/dense.
 
 ### 📐 2. Dynamic Adaptive Stroke Width Scaling
 - **Diagnosa Root Cause**:
   - Ketebalan garis outline sebelumnya bernilai konstan (~9px), yang terlalu tipis dibanding lebar sel pada grid `100x56` (12.8px), sehingga mudah memicu celah di antara sel.
-- **Solusi Teknis v2.0**:
+- **Solusi Teknis v1.5**:
   - Skala ketebalan garis outline di-adjust secara dinamis mengikuti lebar sel pengguna:
     $$\text{adaptiveStrokeWidth} = \max(\lfloor \text{cellWidth} \times 1.4 \rfloor, \, \lfloor \text{fontSizeHD} \times 0.08 \rfloor)$$
   - Menjamin garis outline font selalu memiliki ketebalan minimal 1.4 - 2.0 sel grid across all density settings.
@@ -148,7 +148,7 @@ Dokumen ini mencatat daftar perubahan, perbaikan bug, optimasi performa, dan pen
 ### 🔤 3. High-Contrast ASCII Glyph Booster (Legibility Enhancement di Extreme 4K)
 - **Diagnosa Root Cause**:
   - Pada kerapatan tinggi (`280x157` & `240x135`), ukuran sel grid sangat kecil (~4.5px). Font ASCII biasa mengecil menjadi bintik piksel yang sulit dibaca dan kehilangan karakteristik bentuk huruf ASCII-nya (tampak seperti titik `...`).
-- **Solusi Teknis v2.0**:
+- **Solusi Teknis v1.5**:
   - Mengaplikasikan **Glyph Booster**: Pada mode ASCII di resolusi tinggi, ukuran glyph karakter ditingkatkan secara adaptif (`1.7x` ukuran sel) dengan memilih glyph kepadatan tinggi (`@`, `#`, `8`, `B`).
   - Karakteristik bentuk huruf ASCII tetap jelas, tajam, dan legible sebagai teks ASCII asli.
 
@@ -157,6 +157,16 @@ Dokumen ini mencatat daftar perubahan, perbaikan bug, optimasi performa, dan pen
   - Menambahkan modal overlay non-dismissable (`z-index: 999999`) yang memblokir akses aplikasi saat diakses dari HP/tablet posisi tegak (Portrait).
 - **Animasi Looping Rotasi Perangkat**:
   - Dilengkapi grafik animasi vektor HP retro 70s yang berputar 90° secara berulang (looping) dari posisi tegak ke miring sebagai panduan visual yang jelas bagi pengguna.
+
+### 🎛️ 5. Restrukturisasi Pilihan Grid Density & Setting Default Ultra HD Density (180 x 101)
+- **Penyesuaian Opsi Density**:
+  - Menghapus opsi Ultra 8K (`280x157`) dan Extreme 4K (`240x135`) dari registrasi dropdown UI.
+  - Menjadikan **Ultra HD Density (`180x101` - 18,180 Grid Points)** sebagai opsi kerapatan default rekomendasi utama. Resolusi ini menghasilkan detail media yang sangat pas, tajam, dan stabil tanpa memicu hilangnya legibilitas karakter ASCII.
+
+### 🔤 6. Peningkatan Ukuran Font Karakter ASCII Media Background (1.5x Cell Size)
+- **Peningkatan Visual Glyph**:
+  - Mengubah faktor skala ukuran font ASCII media pada `drawColorASCIIMatrix` dari `1.3x` menjadi **`1.5x`** dari ukuran sel grid.
+  - Karakter ASCII gambar/video latar belakang kini tampil lebih tebal, tegas, dan menonjol selaras dengan skala glyph lirik.
 
 
 
