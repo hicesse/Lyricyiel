@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Lyricyiel</title>
+  
+  <!-- Google Fonts: Lora (Editorial Serif), Inconsolata (Retro Monospace) & JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@400;600;800&family=Lora:ital,wght@0,500;0,700;1,600&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <div class="app-container">
+    <!-- Header -->
+    <header class="app-header">
+      <div class="logo-box">
+        
+        <h1>Lyri<span class="highlight">cyiel</span></h1>
+      </div>
+      <p class="subtitle">Built by <strong>@hicesse</strong></p>
+    </header>
+
+    <!-- Mobile Landscape Banner Hint -->
+    <div id="mobile-landscape-hint" class="mobile-landscape-hint">
+      <span class="hint-text">📱 Rekomendasi Mobile: Putar layar ke posisi Horizontal (Landscape) untuk pengalaman full screen terbaik</span>
+      <button id="mobile-rotate-btn" class="primary-btn sm-btn">🔄 Buka Landscape Fullscreen</button>
+    </div>
+
+    <!-- Main Workspace -->
+    <main class="main-content">
+      
+      <!-- Top Control Bar: Song Selector & Upload -->
+      <section class="control-card glass-panel">
+        
+        <!-- Step 1: Pilih Lagu Server -->
+        <div class="form-group">
+          <label for="song-select"><span class="step-num">1</span> Pilih Lagu dari Server:</label>
+          <select id="song-select" class="custom-select">
+            <option value="">-- Memuat Lagu... --</option>
+          </select>
+        </div>
+
+        <!-- Step 2: Kerapatan Grid (Kualitas Render & Detail) -->
+        <div class="form-group">
+          <label for="density-select"><span class="step-num">2</span> Kerapatan Grid (Kualitas Render Detail):</label>
+          <select id="density-select" class="custom-select">
+            <option value="280x157" selected>💎 Ultra 8K Precision (280 x 157 - 43,960 Grid) [Rekomendasi Layar Penuh Detail]</option>
+            <option value="240x135">🔥 Extreme 4K Density (240 x 135 - 32,400 Grid)</option>
+            <option value="180x101">⚡ Ultra HD Density (180 x 101 - 18,180 Grid)</option>
+            <option value="140x78">✨ High Density (140 x 78 - 10,920 Grid)</option>
+            <option value="100x56">🌟 Smooth Matrix (100 x 56 - 5,600 Grid)</option>
+          </select>
+        </div>
+
+        <!-- Step 3: Gaya Render (Karakter ASCII / Vector Dots) -->
+        <div class="form-group">
+          <label for="style-select"><span class="step-num">3</span> Gaya Render Karakter:</label>
+          <select id="style-select" class="custom-select">
+            <option value="ascii" selected>🔤 Colored ASCII Characters (" .:-=+*#%@") [Karakter + Warna File]</option>
+            <option value="dots">🔴 Colored Vector Dots (Halftone Matrix)</option>
+          </select>
+        </div>
+
+        <!-- Step 4: Gaya & Warna Interior Lirik -->
+        <div class="form-group-row" style="display: flex; gap: 12px; flex-wrap: wrap;">
+          <div class="form-group" style="flex: 1; min-width: 200px;">
+            <label for="lyric-fill-select"><span class="step-num">4</span> Warna Interior Lirik:</label>
+            <select id="lyric-fill-select" class="custom-select">
+              <option value="dark-gray" selected>🌑 Dark Charcoal Gray (#12121c - Abu-abu Gelap)</option>
+              <option value="black">⬛ Pure Pitch Black (#05050a - Hitam Pekat)</option>
+            </select>
+          </div>
+
+          <div class="form-group" style="flex: 1; min-width: 200px;">
+            <label for="lyric-glow-select"><span class="step-num">5</span> Efek Glow Lirik:</label>
+            <select id="lyric-glow-select" class="custom-select">
+              <option value="on" selected>✨ Glow Menyala (Neon Glow Outline)</option>
+              <option value="off">🚫 Tanpa Glow (Solid Outline Clean)</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Step 6: Sumber Visualizer (Default / Video / Foto) -->
+        <div class="form-group">
+          <label><span class="step-num">6</span> Sumber Visualizer Background:</label>
+          <div class="tab-options">
+            <button type="button" class="tab-btn active" data-tab="default">Default Preset</button>
+            <button type="button" class="tab-btn" data-tab="video">Upload Video (Max 20MB)</button>
+            <button type="button" class="tab-btn" data-tab="photo">Upload Foto (1-5 Foto)</button>
+          </div>
+        </div>
+
+        <!-- Input Tab: Video Upload -->
+        <div id="tab-content-video" class="tab-content hidden">
+          <div class="file-upload-box">
+            <input type="file" id="video-input" accept="video/*">
+            <label for="video-input" class="file-label">
+              <span class="upload-icon">📹</span>
+              <span class="file-text">Pilih File Video (Maks 20MB, Crop 15 Detik)</span>
+            </label>
+            <div id="video-file-info" class="file-info"></div>
+          </div>
+        </div>
+
+        <!-- Input Tab: Photo Upload -->
+        <div id="tab-content-photo" class="tab-content hidden">
+          <div class="file-upload-box">
+            <input type="file" id="photo-input" accept="image/*" multiple>
+            <label for="photo-input" class="file-label">
+              <span class="upload-icon">🖼️</span>
+              <span class="file-text">Pilih 1 s/d 5 Foto (Durasi 15/N Detik/Foto)</span>
+            </label>
+            <div id="photo-file-info" class="file-info"></div>
+          </div>
+        </div>
+
+        <!-- Action Button Utama: Start Render & Play -->
+        <button id="start-btn" class="primary-btn pulse-glow">
+          <span class="btn-icon">▶</span> START RENDER & PLAY MUSIC
+        </button>
+
+      </section>
+
+      <!-- Visualizer Screen Box (Full-Width Responsive 16:9 Container) -->
+      <section class="visualizer-section">
+        <div id="visualizer-container" class="visualizer-container">
+          <canvas id="ascii-canvas" width="1280" height="720"></canvas>
+          
+          <!-- Fullscreen Top Header Bar -->
+          <div class="fullscreen-top-bar">
+            <div class="fullscreen-song-badge">
+              <span class="badge-icon">🎵</span>
+              <span id="fullscreen-song-title">Drop Dead — Olivia Rodrigo</span>
+            </div>
+            <button id="fullscreen-btn" class="icon-btn fullscreen-btn" title="Toggle Fullscreen Landscape">
+              <span>⛶</span> <span class="fs-btn-text">Landscape Fullscreen</span>
+            </button>
+          </div>
+
+          <!-- Floating Overlay Controls for Fullscreen Landscape Mode -->
+          <div id="fullscreen-bottom-bar" class="fullscreen-bottom-bar hidden">
+            <button id="fs-play-btn" class="fs-control-btn">▶</button>
+            <span id="fs-time-display" class="fs-time-text">00:00 / 00:20</span>
+            <div class="fs-slider-wrap">
+              <input type="range" id="fs-seek-slider" min="0" max="100" value="0" step="0.1">
+            </div>
+            <button id="fs-exit-btn" class="fs-exit-btn">✕ Exit</button>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- Playback Controls Card -->
+      <section class="playback-card glass-panel">
+        <div class="player-controls">
+          
+          <button id="play-pause-btn" class="icon-btn play-btn" disabled>
+            <span id="play-icon">▶</span>
+          </button>
+
+          <div class="time-display">
+            <span id="current-time">00:00</span> / <span id="total-duration">00:00</span>
+          </div>
+
+          <div class="slider-container flex-grow">
+            <input type="range" id="seek-slider" min="0" max="100" value="0" step="0.1" disabled>
+          </div>
+
+          <div class="volume-container">
+            <span class="vol-icon">🔊</span>
+            <input type="range" id="volume-slider" min="0" max="1" value="0.8" step="0.05">
+          </div>
+
+        </div>
+      </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="app-footer">
+      <p><strong>Lilynn</strong> &copy; 2026 | Created by <strong>@hicesse</strong> • Built with Web Audio API &amp; HTML5 Canvas 2D</p>
+    </footer>
+  </div>
+
+  <!-- Progress Bar Modal Overlay (Non-Realtime Pre-rendering) -->
+  <div id="progress-modal" class="modal-overlay hidden">
+    <div class="modal-card glass-panel">
+      <div class="spinner-neon"></div>
+      <h3>Pre-Rendering ASCII Frames...</h3>
+      <p id="progress-status" class="progress-status">Memproses piksel & konversi karakter ASCII</p>
+      
+      <div class="progress-bar-track">
+        <div id="progress-bar-fill" class="progress-bar-fill" style="width: 0%;"></div>
+      </div>
+      
+      <span id="progress-percent" class="progress-percent">0%</span>
+    </div>
+  </div>
+
+  <!-- Hidden Audio Element -->
+  <audio id="audio-player" crossorigin="anonymous"></audio>
+
+  <!-- JavaScript Modular Architecture -->
+  <script src="js/config/template-config.js"></script>
+  <script src="js/render/ascii-converter.js"></script>
+  <script src="js/render/pre-renderer.js"></script>
+  <script src="js/render/matrix-renderer.js"></script>
+  <script src="js/lyrics/lyric-manager.js"></script>
+  <script src="js/lyrics/lyric-texture-builder.js"></script>
+  <script src="js/audio/audio-engine.js"></script>
+  <script src="js/audio/spectrum-visualizer.js"></script>
+  <script src="js/ui/idle-manager.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
