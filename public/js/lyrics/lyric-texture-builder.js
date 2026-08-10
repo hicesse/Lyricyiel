@@ -42,8 +42,8 @@ function buildLyricTextures(
     mCtx.textAlign = "center";
     mCtx.textBaseline = "middle";
 
-    // Posisi lirik di area 30% tinggi layar dari bawah
-    const bottomGapHD = Math.floor(canvasH * 0.22);
+    // Posisi lirik di area ~35% tinggi layar dari bawah (tinggi font tetap 16%)
+    const bottomGapHD = Math.floor(canvasH * 0.27);
     const yPosHD = canvasH - bottomGapHD - (fontSizeHD / 2);
     const xPosHD = canvasW / 2;
 
