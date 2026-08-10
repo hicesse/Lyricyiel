@@ -1,12 +1,12 @@
-# Summary Rangkuman Pengembangan Proyek: Lilynn — 70s Vintage ASCII Music Visualizer & Synced Lyrics
+# Summary Rangkuman Pengembangan Proyek: Lyricyiel
 
-Dokumen ini merupakan rangkuman komprehensif yang mengonsolidasikan seluruh catatan pengembangan, arsitektur sistem, keputusan desain UI/UX, riwayat perbaikan bug, diagnosa *root cause*, serta solusi teknis dari seluruh dokumen proyek (**Lilynn Visualizer**).
+Dokumen ini merupakan rangkuman komprehensif yang mengonsolidasikan seluruh catatan pengembangan, arsitektur sistem, keputusan desain UI/UX, riwayat perbaikan bug, diagnosa *root cause*, serta solusi teknis dari seluruh dokumen proyek (**Lyricyiel**).
 
 ---
 
 ## 📜 1. Ikhtisar Proyek & Visi Arsitektur
 
-- **Nama Resmi Proyek:** **Lilynn** (`Lilynn — 70s Vintage ASCII Music Visualizer & Synced Lyrics`)
+- **Nama Resmi Proyek:** **Lyricyiel** (`Lyricyiel`)
 - **Kredit Resmi:** **`@hicesse`**
 - **Visi Aplikasi:** Web Music Player & Synced Lyrics Visualizer 100% *Client-Side Processing* yang menggabungkan estetika majalah/katalog cetak tua era 1970-an (*Kalso 70s Retro Print Catalog*), engine rendering matriks warna **ASCII / Vector Dot Matrix HD**, gelombang audio **ASCII Oscilloscope Fluid**, lirik tersinkronisasi *hollow masking*, serta kemampuan *custom visualizer* dari file video atau foto yang diunggah pengguna.
 
@@ -171,4 +171,4 @@ Berikut adalah daftar lengkap masalah teknis yang ditemukan selama siklus pengem
 
 ## 📌 Kesimpulan Akhir
 
-Aplikasi **Lilynn — 70s Vintage ASCII Music Visualizer & Synced Lyrics** telah selesai dikembangkan dan dioptimalkan sepenuhnya. Aplikasi ini mampu menyajikan visualisasi sinematik 60 FPS zero-lag, sinkronisasi lirik HD *hollow masking*, serta ekstraksi video background yang 100% mulus, stabil, dan aman dari kemacetan memori maupun *frame freeze*.
+Aplikasi **Lyricyiel** telah selesai dikembangkan dan dioptimalkan sepenuhnya. Aplikasi ini mampu menyajikan visualisasi sinematik 60 FPS zero-lag, sinkronisasi lirik HD *hollow masking*, serta ekstraksi video background yang 100% mulus, stabil, dan aman dari kemacetan memori maupun *frame freeze*.
