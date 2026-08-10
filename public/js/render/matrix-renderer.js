@@ -1,7 +1,7 @@
 /**
  * Module (Render Engine): Color ASCII & Dot Matrix GPU Renderer
  */
-const DEFAULT_ASCII_CHARS = " .:-=+*#%@$80";
+const DEFAULT_ASCII_CHARS = " .:-=+*#%@abi8";
 
 // Helper: Render Matriks Karakter ASCII (" .:-=+*#%@") Full Warna Akurat & Gradien Kaya
 function drawColorASCIIMatrix(ctx, colorData, width = 280, height = 157, targetCanvas = null, customAsciiChars = DEFAULT_ASCII_CHARS) {

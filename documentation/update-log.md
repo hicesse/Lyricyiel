@@ -134,8 +134,8 @@ Dokumen ini mencatat daftar perubahan, perbaikan bug, optimasi performa, dan pen
 - **Diagnosa Root Cause**:
   - Pada kerapatan grid sedang hingga rendah (`100x56` & `140x78`), sampling piksel 1 titik di tengah sel sering meluputi garis vektor outline font lirik yang tipis, menyebabkan sebagian huruf lirik terputus-putus atau hilang (*line break artifact*).
 - **Solusi Teknis v2.0**:
-  - Mengimplementasikan **Sub-Cell 3x3 Area Sampling** pada `buildLyricTextures`. Setiap sel grid kini mengevaluasi 9 titik sub-piksel di dalam rentang koordinat sel.
-  - Jika salah satu sub-piksel menyentuh garis outline vektor font HD, sel tersebut dijamin 100% di-render sebagai **Outline Border**, mengeliminasi bug garis lirik terputus-putus tanpa perlu memperbesar ukuran box lirik.
+  - Mengimplementasikan **Sub-Cell 2x2 Area Sampling (4 Titik Presisi)** pada `buildLyricTextures`. Setiap sel grid kini mengevaluasi 4 titik sub-piksel di dalam rentang koordinat sel secara seimbang dan efisien.
+  - Jika salah satu sub-piksel menyentuh garis outline vektor font HD, sel tersebut dijamin 100% di-render sebagai **Outline Border**, mengeliminasi bug garis lirik terputus-putus tanpa membuat tampilan terlalu padat/dense.
 
 ### 📐 2. Dynamic Adaptive Stroke Width Scaling
 - **Diagnosa Root Cause**:

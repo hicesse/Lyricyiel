@@ -83,16 +83,17 @@ function buildLyricTextures(
       for (let x = 0; x < width; x++) {
         const cxPos = x * cellWidth + cellWidth / 2;
 
-        // Sub-Cell Area-Coverage Super-Sampling (3x3 Sub-Grid Sampling)
+        // Sub-Cell Area-Coverage Super-Sampling (2x2 Sub-Grid Sampling - 4 Titik Presisi)
         let isOutlineCell = false;
         let isInteriorCell = false;
 
-        for (let sy = 0.2; sy <= 0.8; sy += 0.3) {
-          const sampleY = Math.floor(y * cellHeight + cellHeight * sy);
+        const subOffsets = [0.3, 0.7];
+        for (let i = 0; i < 2; i++) {
+          const sampleY = Math.floor(y * cellHeight + cellHeight * subOffsets[i]);
           if (sampleY < 0 || sampleY >= canvasH) continue;
 
-          for (let sx = 0.2; sx <= 0.8; sx += 0.3) {
-            const sampleX = Math.floor(x * cellWidth + cellWidth * sx);
+          for (let j = 0; j < 2; j++) {
+            const sampleX = Math.floor(x * cellWidth + cellWidth * subOffsets[j]);
             if (sampleX < 0 || sampleX >= canvasW) continue;
 
             const pixelIdx = (sampleY * canvasW + sampleX) * 4;
